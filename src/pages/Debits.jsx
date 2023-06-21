@@ -46,24 +46,3 @@ const Debits = ({debitBalance, setDebitBalance}) => {
 };
 
 export default Debits;
-
-/*
-amount: 
-description:
-date: 
-
-a = [{}]
-setA([...a, newObject]) 
-
-const [list, setList] = useState([]);
-list = {amount: 1000, description: "debit", date: Date.now()};
-setList([...list,{amount: 2000, description: "debit2", date: Date.now()}]);
-console.log(list) // two objects 
-
-list.map((list) => {
-  return {
-    <h2>list.amount</h2>
-  };
-})
-
-*/
