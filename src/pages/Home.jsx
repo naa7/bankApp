@@ -11,6 +11,9 @@ const Home = () => {
   const [debitBalance, setDebitBalance] = useState([]);
   const [creditBalance, setCreditBalance] = useState([]);
   const [accountBalance, setAccountBalance] = useState(0);
+  const [debitTransactionsList, setDebitTransactionsList] = useState([]);
+  const [creditTransactionsList, setCreditTransactionsList] = useState([]);
+
   
 
     useEffect(() => {
@@ -58,8 +61,8 @@ const Home = () => {
         <h2>Account Number: {accountNumber}</h2>
         <h2>Account Balance: {accountBalance}</h2>
         <Routes>
-          <Route path="/debits/*" element={<Debits debitBalance = {debitBalance} accountBalance = {accountBalance} setDebitBalance = {setDebitBalance}/>} />
-          <Route path="/credits/*" element={<Credits creditBalance = {creditBalance} accountBalance = {accountBalance} setCreditBalance = {setCreditBalance}/>} />
+          <Route path="/debits/*" element={<Debits debitBalance = {debitBalance} accountBalance = {accountBalance} setDebitBalance = {setDebitBalance} debitTransactionsList = {debitTransactionsList} setDebitTransactionsList = {setDebitTransactionsList}/>} />
+          <Route path="/credits/*" element={<Credits creditBalance = {creditBalance} accountBalance = {accountBalance} setCreditBalance = {setCreditBalance} creditTransactionsList = {creditTransactionsList} setCreditTransactionsList = {setCreditTransactionsList}/>} />
         </Routes>
     </div>
   );

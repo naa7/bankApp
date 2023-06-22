@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-const Debits = ({debitBalance, setDebitBalance}) => {
-  const [transactionsList, setTransactionsList] = useState([]);
+const Debits = ({debitBalance, setDebitBalance, debitTransactionsList, setDebitTransactionsList}) => {
   const totalDebitBalance = debitBalance.reduce((total, current) => total + current, 0);
 
   const handleTransaction = (event) => {
@@ -9,7 +8,7 @@ const Debits = ({debitBalance, setDebitBalance}) => {
     const date = Date.now();
     const debitAmount = Number(event.target.amount.value);
     const description = event.target.description.value;
-    setTransactionsList([...transactionsList, {amount: debitAmount, description: description, date: date}]);
+    setDebitTransactionsList([...debitTransactionsList, {amount: debitAmount, description: description, date: date}]);
     const updatedDebitBalance = [...debitBalance, debitAmount];
     setDebitBalance(updatedDebitBalance);
     event.target.amount.value = "";
@@ -30,12 +29,12 @@ const Debits = ({debitBalance, setDebitBalance}) => {
       <div>
         <h3>Transaction History:</h3>
         <ul>
-          {transactionsList.map((transactionsList, index) => {
+          {debitTransactionsList.map((debitTransactionsList, index) => {
             return ( 
               <li key={index} style={{ margin: '10px 0' }}>
-                Amount: {transactionsList.amount}<br />
-                Description: {transactionsList.description}<br />
-                Date: {new Date(transactionsList.date).toLocaleString()}
+                Amount: {debitTransactionsList.amount}<br />
+                Description: {debitTransactionsList.description}<br />
+                Date: {new Date(debitTransactionsList.date).toLocaleString()}
               </li>
             );
           })}

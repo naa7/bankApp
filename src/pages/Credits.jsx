@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from "react";
 
-const Credits = ({creditBalance, setCreditBalance}) => {
-  const [transactionsList, setTransactionsList] = useState([]);
+const Credits = ({creditBalance, setCreditBalance, creditTransactionsList, setCreditTransactionsList}) => {
   const totalCreditBalance = creditBalance.reduce((total, current) => total + current, 0);
 
   const handleTransaction = (event) => {
@@ -9,7 +8,7 @@ const Credits = ({creditBalance, setCreditBalance}) => {
     const date = Date.now();
     const creditAmount = Number(event.target.amount.value);
     const description = event.target.description.value;
-    setTransactionsList([...transactionsList, {amount: creditAmount, description: description, date: date}]);
+    setCreditTransactionsList([...creditTransactionsList, {amount: creditAmount, description: description, date: date}]);
     const updatedCreditBalance = [...creditBalance, creditAmount];
     setCreditBalance(updatedCreditBalance);
     event.target.amount.value = "";
@@ -29,12 +28,12 @@ const Credits = ({creditBalance, setCreditBalance}) => {
       <div>
         <h3>Transaction History:</h3>
         <ul>
-          {transactionsList.map((transactionsList, index) => {
+          {creditTransactionsList.map((creditTransactionsList, index) => {
             return ( 
               <li key={index} style={{ margin: '10px 0' }}>
-                Amount: {transactionsList.amount}<br />
-                Description: {transactionsList.description}<br />
-                Date: {new Date(transactionsList.date).toLocaleString()}
+                Amount: {creditTransactionsList.amount}<br />
+                Description: {creditTransactionsList.description}<br />
+                Date: {new Date(creditTransactionsList.date).toLocaleString()}
               </li>
             );
           })}
