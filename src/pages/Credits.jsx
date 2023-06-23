@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
 const Credits = ({creditBalance, setCreditBalance, creditTransactionsList, setCreditTransactionsList}) => {
   const totalCreditBalance = creditBalance.reduce((total, current) => total + current, 0);
@@ -28,7 +28,7 @@ const Credits = ({creditBalance, setCreditBalance, creditTransactionsList, setCr
       <div>
         <h3>Transaction History:</h3>
         <ul>
-          {creditTransactionsList.map((creditTransactionsList, index) => {
+          {creditTransactionsList.sort((a, b) => new Date(b.date) - new Date(a.date)).map((creditTransactionsList, index) => {
             return ( 
               <li key={index} style={{ margin: '10px 0' }}>
                 Amount: {creditTransactionsList.amount}<br />

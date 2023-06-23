@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 
 const Debits = ({debitBalance, setDebitBalance, debitTransactionsList, setDebitTransactionsList}) => {
   const totalDebitBalance = debitBalance.reduce((total, current) => total + current, 0);
@@ -29,7 +29,7 @@ const Debits = ({debitBalance, setDebitBalance, debitTransactionsList, setDebitT
       <div>
         <h3>Transaction History:</h3>
         <ul>
-          {debitTransactionsList.map((debitTransactionsList, index) => {
+          {debitTransactionsList.sort((a, b) => new Date(b.date) - new Date(a.date)).map((debitTransactionsList, index) => {
             return ( 
               <li key={index} style={{ margin: '10px 0' }}>
                 Amount: {debitTransactionsList.amount}<br />
